@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>java script</title>
+    
+</head>
+<body>
+     <h1> hello world</h1>
+    
+     <h3> ager ap day number sa janan chaty he to ap nehchy diya gay button per click kar</h3>
+
+      <button onclick="helloguys()">try now </button> 
+      <button onclick="hellobro()">click now</button>
+      <button onclick="helloworld()">upload</button>
+
+      <p> it's a day</p>
+      <div>
+<img style="height: 200px; width: 200px;" id="img" alt="">
+      </div>
+    
+
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+        function helloguys(){
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "time over ! try again",
+              footer: '<a href="#">Why do I have this issue?</a>'
+            });
+        }
+
+
+
+        function hellobro(){
+            const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: "btn btn-success",
+    cancelButton: "btn btn-danger"
+  },
+  buttonsStyling: false
+});
+swalWithBootstrapButtons.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonText: "Yes, delete it!",
+  cancelButtonText: "No, cancel!",
+  reverseButtons: true
+}).then((result) => {
+  if (result.isConfirmed) {
+    swalWithBootstrapButtons.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success"
+    });
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire({
+      title: "Cancelled",
+      text: "Your imaginary file is safe :)",
+      icon: "error"
+    });
+  }
+});
+        }
+
+
+     function helloworld(){
+        (async () => {
+  const { value: file } = await Swal.fire({
+    title: "Select image",
+    input: "file",
+    inputAttributes: {
+      "accept": "image/*",
+      "aria-label": "Upload your profile picture"
+    }
+  });
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      Swal.fire({
+        title: "Your uploaded picture",
+        imageUrl: e.target.result,
+        imageAlt: "The uploaded picture"
+      }).then((result)=>{
+        if(result){
+            localStorage.setItem("image",e.target.result)
+            document.getElementById('img').src=e.target.result
+
+        }
+      })
+    };
+    reader.readAsDataURL(file);
+  }
+})()  
+     }
+     let getImage = localStorage.getItem("image")
+     document.getElementById('img').src= getImage
+    </script>
+    
+    
+    <script>
+        // function sum(math,eng,sc){
+        //   var s = math + eng + sc;
+    
+        //   return s;
+        // }
+    
+        // function percentage(tt){
+        //    var per = tt/300 * 100;
+        //    document.write(per);
+        // }
+    
+        // var total = sum(80,80,80);
+    
+        // percentage(total);
+
+//  global & local variable
+
+        // var a = 12
+
+        //     function hello(){
+               
+        //         document.write(a + ("<br>") )
+        //     }
+
+        //     hello()
+        // document.write(a)
+
+
+        // switch statment
+
+
+    //   var day  = 3;
+
+    //   switch(day){
+
+    //     case  0:
+    //         document.write(" Today is Monday")
+    //     break;
+
+    //     case  1:
+    //         document.write(" Today is tuesday")
+    //     break;
+
+    //     case  2:
+    //         document.write(" Today is wednesday")
+    //     break;
+
+    //     case  3:
+    //         document.write(" Today is thursday")
+    //     break;
+
+    //     case  4:
+    //         document.write(" Today is friday")
+    //     break;
+
+    //     case  5:
+    //         document.write(" Today is saturday")
+    //     break;
+
+    //     case  6:
+    //         document.write(" Today is sunday")
+    //     break;
+
+    //     default:
+    //         document.write("day number is invild")
+
+    //   }
+
+
+    
+
+    
+
+      </script>
+</body>
+</html>
